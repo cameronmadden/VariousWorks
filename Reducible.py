@@ -2,7 +2,9 @@
 # a list of every word in the dictionary to find the longest 'reducible' word.
 # Reducible in this case means that you can take out one letter of the word
 # and still have the resulting word be in the dictionary all the way down to
-# one letter. For example: [amp -> am -> a], therefore amp is reducible.
+# one letter. For example: [amp -> am -> a], therefore amp is reducible. Because
+# there are so many words, hashing is used to speed up to process by eliminating
+# possible words as it goes.
 
 import sys
 

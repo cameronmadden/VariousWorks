@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src='phaser.min.js'></script>
+        <script src='scene-zero.js'></script>
+        <script src='scene-one.js'></script>
+        <script src='scene-two.js'></script>
+        <script src='scene-three.js'></script>
+    </head>
+    <body>
+        <div id ="game"></div>
+        <script type='text/javascript'>
+
+            var phaserConfig = {
+                type: Phaser.AUTO,
+                parent: "game",
+                width: 800,
+                height: 800,
+                physics: {
+                    default: 'arcade',
+                    arcade: {
+                        gravity: { y: 1000 },
+                        debug: false
+                    }
+                },
+                scene: [SceneZero, SceneOne, SceneTwo, SceneThree]
+            };
+                        
+            
+            var game = new Phaser.Game(phaserConfig);
+            var player;
+            var arrows;
+            var score = 0;
+            var scoreText;
+            var enemiesOne;
+            var cocoTimer = 0;
+            var arrowTimer = 0;
+            var enemiesOneTimer = 0;
+            var floor;
+            var attacking;
+            var direction;
+            var healthBar;
+            var sceneHealth;
+            var closes = false;
+            var goblinTimer = 0;
+            var xCoorGoblin;
+
+
+        </script>
+    </body>
+</html>

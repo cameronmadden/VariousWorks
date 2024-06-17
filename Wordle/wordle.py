@@ -36,20 +36,42 @@ def makeguess(guessnum, allkeys):
         outputlist = ''
         if validguess(w):
             index = 0
-            DupLetterFix = w
+            keyword_list = []
+            
+            for ch in keyword:
+                keyword_list.append(ch)
+                
+            guess_list = []
+            
+            for ch in w:
+                guess_list.append(ch)
+                
+            outputlistList = ['-','-','-','-','-']
+            
             while index < 5:
-                if keyword[index].lower() == DupLetterFix[index]:
-                    outputlist += 'G'
-                    DupLetterFix = DupLetterFix.replace(keyword[index], '-', 1)
-                    
-                elif DupLetterFix[index].lower() in keyword:
-                       outputlist += 'Y'
-                       DupLetterFix = DupLetterFix.replace(DupLetterFix[index], '-', 1)
-                else:
-                    outputlist += 'N'
-                    allkeys = allkeys.replace(w[index].upper(),' ')
-  
+                if keyword_list[index] == guess_list[index]:
+                    outputlistList[index] = 'G'
+                    keyword_list[index] = '-'
+                    guess_list[index] = '.'
                 index += 1
+            index = 0
+
+            while index < 5:
+                if guess_list[index] in keyword_list:
+                    guess_list[index] = '-'
+                    outputlistList[index] = 'Y'
+                index += 1
+
+            for ch in guess_list:
+                if ch != '.':
+                    allkeys = allkeys.replace(ch.upper(), ' ')
+                    
+            for ch in outputlistList:
+                if ch == '-':
+                    ch = 'N'
+                    
+            for ch in outputlistList:
+                outputlist += ch
 
             for idx in range(len(outputlist)):
                 gap = ''
@@ -80,8 +102,7 @@ def makeguess(guessnum, allkeys):
         print ('it was ' + keyword)
         print ('Better luck next time\n')
         main()
-        
-#("Nah that shit's invalid son")
+
     
 def checkcorrect(outputlist):
     if outputlist == 'GGGGG':
